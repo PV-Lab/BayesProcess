@@ -5,7 +5,11 @@ BayesProcess is a python package for Physics informed Bayesian network inference
 ## Installation
 
 To install, just clone the following repository:
+
+
 pip install -r requirements.txt
+
+
 https://github.com/PV-Lab/BayesProcess.git
 
 ## Usage
