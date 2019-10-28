@@ -18,6 +18,8 @@ The package contains the following module and scripts:
 | ------------- | ------------------------------ |
 | `JV_surrogate.py`      | Script for training neural network JV surrogate model      |
 | `Bayes.py`      | Script for Bayesian inference using MCMC    |
+| `requirements.txt`      | required packages    |
+
 
 
 ## Authors
