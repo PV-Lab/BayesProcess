@@ -1,0 +1,6 @@
+keras
+tensorflow
+emcee
+scikit-learn
+numpy
+matplotlib
