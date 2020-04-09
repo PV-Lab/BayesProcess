@@ -41,6 +41,14 @@ JV_exp = ae.predict(JV_exp)
 # Load material parameters that generated the JV dataset
 par = np.loadtxt('./Dataset/GaAs_sim_label.txt')
 
+#Covert labels from log10 form to log
+        
+def log10_ln(x):
+    return np.log(np.power(10,x))
+
+par = log10_ln(par)
+
+
 #Normalize JV descriptors column-wise
 scaler = MinMaxScaler()
 
@@ -87,7 +95,7 @@ def logp(x):
     
 sigma = 1e-6
 ntemp = 10
-nruns = 10000
+nruns = 2000
 Temp_i = 0
 #initialize the chian with a=0, b=0, c=0.5
 pos = np.tile((0,0,0.5),5)/10+1e-4*np.random.randn(ntemp,64, 15)
@@ -98,7 +106,7 @@ ntemps, nwalkers, ndim = pos.shape
 sampler = PTSampler(ntemps,nwalkers, ndim, log_probability,logp, loglargs=(x, JV_exp, sigma))
 sampler.run_mcmc(pos, nruns )
 samples = sampler.chain
-
+#%%
 #use the values obtained in the first MCMC chain to update the inistal estimate
 pos_update = samples[:,:,-1,:]+1e-5*np.random.randn(ntemp,64, 15)
 sampler.reset()
